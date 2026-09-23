@@ -55,7 +55,7 @@ export function isLocalProduct(id) {
 export function addLocalProduct(product) {
   load();
   const maxId = state.created.reduce((max, p) => Math.max(max, p.id), LOCAL_ID_START);
-  const created = { ...product, id: maxId + 1, isLocal: true, rating: product.rating ?? 0, images: product.images ?? [] };
+  const created = { ...product, id: maxId + 1, isLocal: true, rating: 0, reviews: [], images: [] };
   save({ ...state, created: [created, ...state.created] });
   return created;
 }
