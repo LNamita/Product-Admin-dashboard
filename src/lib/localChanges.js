@@ -105,19 +105,15 @@ function matchesQuery(product, { q, category }) {
 /**
  * One page of API results: removes deleted products, applies edits, and
  * adds products created in this app to the top of page 1 (if they match
- * the current search or category).
+ * the current search or category). Page numbers and "Showing x–y of z"
+ * still follow the server's numbers, so pagination stays correct.
  */
 export function applyToList(data, query, changes) {
-  const serverItems = data.products
-    .map((p) => applyToProduct(p, changes))
-    .filter(Boolean);
-  const removedCount = data.products.length - serverItems.length;
-  const newItems = changes.created.filter((p) => matchesQuery(p, query));
+  const serverItems = data.products.map((p) => applyToProduct(p, changes)).filter(Boolean);
+  const newItems = query.page === 1 ? changes.created.filter((p) => matchesQuery(p, query)) : [];
 
   return {
-    products: query.page === 1 ? [...newItems, ...serverItems] : serverItems,
-    total: Math.max(0, data.total + newItems.length - removedCount),
-    serverTotal: data.total,
-    localCount: query.page === 1 ? newItems.length : 0,
+    products: [...newItems, ...serverItems],
+    localCount: newItems.length,
   };
 }
