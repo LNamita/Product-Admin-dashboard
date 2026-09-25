@@ -10,8 +10,8 @@ A small admin dashboard to log in and manage products, built with **Next.js 16 (
 Requirements: Node.js 20.9 or newer.
 
 ```bash
-git clone <your-repo-url>
-cd product-admin-dashboard
+git clone https://github.com/LNamita/Product-Admin-dashboard.git
+cd Product-Admin-dashboard
 npm install
 cp .env.example .env.local   # optional, the default API URL is already https://dummyjson.com
 npm run dev                  # http://localhost:3000
