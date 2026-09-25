@@ -2,7 +2,7 @@
 
 A small admin dashboard to log in and manage products, built with **Next.js 16 (App Router)**, **React 19**, **Tailwind CSS 4** and **Axios**, using the free [DummyJSON](https://dummyjson.com) API.
 
-**Live demo:** _add your Vercel link here_
+**Live demo:** https://product-admin-dashboard-ruby.vercel.app
 **Login:** `emilys` / `emilyspass`
 
 ## Setup
